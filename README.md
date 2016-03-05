@@ -37,4 +37,4 @@ Download (or git pull) the code in pi. Run the program
 $> python MAG3110.py
 ```
 
-The code output is raw value of magnetic field in x, y, z axis
+The code output is raw value of magnetic field in X, Y and Z axis
