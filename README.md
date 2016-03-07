@@ -3,6 +3,7 @@
 MAG3110 3-Axis Digital Magnetometer Electronic Compass  
 
 The MAG3110 is a digital 3-axis magnetometer.
+
 This Device is available from ControlEverything.com [SKU: MAG3110_I2CS]
 
 https://www.controleverything.com/content/Compass?sku=MAG3110_I2CS
