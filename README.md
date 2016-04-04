@@ -8,9 +8,9 @@ This Device is available from ControlEverything.com [SKU: MAG3110_I2CS]
 
 https://www.controleverything.com/content/Compass?sku=MAG3110_I2CS
 
-This Sample code can be used with Raspberry pi.
+This Sample code can be used with Raspberry pi and Arduino.
 
-##Java 
+## Java 
 Download and install pi4j library on Raspberry pi. Steps to install pi4j are provided at:
 
 http://pi4j.com/install.html
@@ -27,7 +27,7 @@ Run the java program as.
 $> pi4j MAG3110
 ```
 
-##Python 
+## Python 
 Download and install smbus library on Raspberry pi. Steps to install smbus are provided at:
 
 https://pypi.python.org/pypi/smbus-cffi/0.5.1
@@ -37,5 +37,14 @@ Download (or git pull) the code in pi. Run the program
 ```cpp
 $> python MAG3110.py
 ```
-
-The code output is raw value of magnetic field in X, Y and Z axis
+ 
+## Arduino
+Download and install Arduino Software (IDE) on your machine. Steps to install Arduino are provided at:
+ 
+https://www.arduino.cc/en/Main/Software
+ 
+Download (or git pull) the code and double click the file to run the program.
+ 
+Compile and upload the code on Arduino IDE and see the output on Serial Monitor.
+ 
+#####The code output is raw value of magnetic field in X, Y and Z axis
