@@ -46,5 +46,18 @@ https://www.arduino.cc/en/Main/Software
 Download (or git pull) the code and double click the file to run the program.
  
 Compile and upload the code on Arduino IDE and see the output on Serial Monitor.
- 
+
+
+## C
+
+Download (or git pull) the code in Beaglebone Black.
+
+Compile the c program.
+```cpp
+$>gcc MAG3110.c -o MAG3110
+```
+Run the c program.
+```cpp
+$>./MAG3110
+ ```
 #####The code output is raw value of magnetic field in X, Y and Z axis
