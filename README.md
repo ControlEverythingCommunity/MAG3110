@@ -60,4 +60,5 @@ Run the c program.
 ```cpp
 $>./MAG3110
  ```
+ 
 #####The code output is raw value of magnetic field in X, Y and Z axis
