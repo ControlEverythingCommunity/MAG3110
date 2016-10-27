@@ -18,11 +18,11 @@ namespace MAG3110
 	//	App that reads data over I2C from a MAG3110 compass
 	public sealed partial class MainPage : Page
 	{
-		private const byte COMPASS_I2C_ADDR = 0x0E;			// I2C address of the MAG3110
-		private const byte COMPASS_REG_CTRL_1 = 0x10;	 	// Control Register 1 register
-		private const byte COMPASS_REG_X = 0x01;			// X Axis data register
-		private const byte COMPASS_REG_Y = 0x03;			// Y Axis data register
-		private const byte COMPASS_REG_Z = 0x05;			// Z Axis data register
+		private const byte COMPASS_I2C_ADDR = 0x0E;	// I2C address of the MAG3110
+		private const byte COMPASS_REG_CTRL_1 = 0x10;	 // Control Register 1 register
+		private const byte COMPASS_REG_X = 0x01;	// X Axis data register
+		private const byte COMPASS_REG_Y = 0x03;	// Y Axis data register
+		private const byte COMPASS_REG_Z = 0x05;	// Z Axis data register
 
 		private I2cDevice I2Ccompass;
 		private Timer periodicTimer;
@@ -40,7 +40,7 @@ namespace MAG3110
 
 		private async void InitI2Ccompass()
 		{
-			string aqs = I2cDevice.GetDeviceSelector();				// Get a selector string that will return all I2C controllers on the system
+			string aqs = I2cDevice.GetDeviceSelector();		// Get a selector string that will return all I2C controllers on the system
 			var dis = await DeviceInformation.FindAllAsync(aqs);	// Find the I2C bus controller device with our selector string
 			if (dis.Count == 0)
 			{
@@ -69,7 +69,7 @@ namespace MAG3110
 			*/
 			byte[] WriteBuf_Ctrl1 = new byte[] { COMPASS_REG_CTRL_1, 0x01 };	// 0x01 sets data output rate = 80.00 Hz, Over sample ratio = 16, 16-bit value read, normal operation, Active mode
 
-			//	Write the register settings
+			// Write the register settings
 			try
 			{
                 I2Ccompass.Write(WriteBuf_Ctrl1);
@@ -126,8 +126,8 @@ namespace MAG3110
 
 		private Compass ReadI2Ccompass()
 		{
-			byte[] RegAddrBuf = new byte[] { COMPASS_REG_X };	 // Read data from the register address
-			byte[] ReadBuf = new byte[6];						// We read 6 bytes sequentially to get all 3 two-byte axes registers in one read
+			byte[] RegAddrBuf = new byte[] { COMPASS_REG_X };	// Read data from the register address
+			byte[] ReadBuf = new byte[6];				// We read 6 bytes sequentially to get all 3 two-byte axes registers in one read
 
 			/*
 				Read from the compass 
@@ -135,7 +135,7 @@ namespace MAG3110
 			*/
 			I2Ccompass.WriteRead(RegAddrBuf, ReadBuf);
 
-			//Check the endianness of the system and flip the bytes if necessary
+			// Check the endianness of the system and flip the bytes if necessary
 			if (!BitConverter.IsLittleEndian)
 			{
 				Array.Reverse(ReadBuf, 0, 2);
@@ -147,9 +147,9 @@ namespace MAG3110
 				In order to get the raw 16-bit data values, we need to concatenate two 8-bit bytes from the I2C read for each axis.
 				We accomplish this by using the BitConverter class.
 			*/
-			int compassRawX = BitConverter.ToInt16(ReadBuf, 0);
-			int compassRawY = BitConverter.ToInt16(ReadBuf, 2);
-			int compassRawZ = BitConverter.ToInt16(ReadBuf, 4);
+			short compassRawX = BitConverter.ToInt16(ReadBuf, 0);
+			short compassRawY = BitConverter.ToInt16(ReadBuf, 2);
+			short compassRawZ = BitConverter.ToInt16(ReadBuf, 4);
 
 			Compass compass;
 			compass.X = compassRawX;
@@ -160,4 +160,3 @@ namespace MAG3110
 		}
 	}
 }
-
