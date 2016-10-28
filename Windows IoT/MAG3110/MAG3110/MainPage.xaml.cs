@@ -72,7 +72,7 @@ namespace MAG3110
 			// Write the register settings
 			try
 			{
-                I2Ccompass.Write(WriteBuf_Ctrl1);
+                		I2Ccompass.Write(WriteBuf_Ctrl1);
 			}
 			// If the write fails display the error and stop running
 			catch (Exception ex)
